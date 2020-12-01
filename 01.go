@@ -9,9 +9,7 @@ import (
 
 var targetValue = 2020
 
-func onePart1() int {
-	values := getData()
-
+func onePart1(values []int) int {
 	for _, val1 := range values {
 		for _, val2 := range values {
 			if val1+val2 == targetValue {
@@ -23,9 +21,7 @@ func onePart1() int {
 	return 0
 }
 
-func onePart2() int {
-	values := getData()
-
+func onePart2(values []int) int {
 	for _, val1 := range values {
 		for _, val2 := range values {
 			for _, val3 := range values {
