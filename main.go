@@ -7,5 +7,7 @@ func main() {
 	fmt.Println(
 		onePart1(day1Data),
 		onePart2(day1Data),
+		twoPart1(),
+		twoPart2(),
 	)
 }
