@@ -14,14 +14,14 @@ func TestOne(t *testing.T) {
 
 	t.Run("part one works", func(t *testing.T) {
 		want := 514579
-		got := onePart1(testInput)
+		got := doOnePart1(testInput)
 
 		assertEqual(t, got, want)
 	})
 
 	t.Run("part 2 works", func(t *testing.T) {
 		want := 241861950
-		got := onePart2(testInput)
+		got := doOnePart2(testInput)
 
 		assertEqual(t, got, want)
 	})
