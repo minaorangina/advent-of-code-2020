@@ -4,9 +4,10 @@ import "fmt"
 
 func main() {
 	fmt.Println(
-		onePart1(),
-		onePart2(),
-		twoPart1(),
-		twoPart2(),
+		"one-1", onePart1(),
+		"one-2", onePart2(),
+		"two-1", twoPart1(),
+		"two-2", twoPart2(),
+		"three-1", threePart1(),
 	)
 }
