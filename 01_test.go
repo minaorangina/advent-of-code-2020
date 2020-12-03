@@ -26,10 +26,3 @@ func TestOne(t *testing.T) {
 		assertEqual(t, got, want)
 	})
 }
-
-func assertEqual(t *testing.T, got, want interface{}) {
-	t.Helper()
-	if got != want {
-		t.Errorf("got %d, want %d", got, want)
-	}
-}

@@ -9,5 +9,6 @@ func main() {
 		"two-1", twoPart1(),
 		"two-2", twoPart2(),
 		"three-1", threePart1(),
+		"three-2", threePart2(),
 	)
 }
