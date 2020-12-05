@@ -41,7 +41,8 @@ func doThree(r io.ReadSeeker, routes []slopeRoute) int {
 	// counts := []int{}
 	result := 1
 	for _, rt := range routes {
-		count := countTrees(bufio.NewScanner(r), rt)
+		count := countTreesOldSkool(bufio.NewScanner(r), rt)
+		// count := countTreesScanning(bufio.NewScanner(r), rt)
 		result = result * count
 		r.Seek(0, 0)
 	}
@@ -49,11 +50,33 @@ func doThree(r io.ReadSeeker, routes []slopeRoute) int {
 	return result
 }
 
-func countTrees(scanner *bufio.Scanner, route slopeRoute) int {
+func countTreesOldSkool(scanner *bufio.Scanner, route slopeRoute) int {
+	lines := []string{}
+
+	for scanner.Scan() {
+		lines = append(lines, scanner.Text())
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+
+	idx, treeCount := route.right, 0
+	for i := route.down; i < len(lines); i += route.down {
+		switch lines[i][idx] {
+		case '#':
+			treeCount++
+		}
+		idx = (idx + route.right) % len(lines[i])
+	}
+
+	return treeCount
+}
+
+func countTreesScanning(scanner *bufio.Scanner, route slopeRoute) int {
 	myScanner := multiScanner(scanner, route.down)
 
 	idx, treeCount := route.right, 0
-	myScanner()
+	// myScanner()
 	for myScanner() {
 		line := scanner.Text()
 		if idx > len(line) {
@@ -62,7 +85,6 @@ func countTrees(scanner *bufio.Scanner, route slopeRoute) int {
 		switch line[idx] {
 		case '#':
 			treeCount++
-
 		}
 		idx = (idx + route.right) % len(line)
 	}
@@ -72,12 +94,6 @@ func countTrees(scanner *bufio.Scanner, route slopeRoute) int {
 
 	return treeCount
 }
-
-// type mScanner func() bool
-
-// func (a mScanner) Scan() bool {
-// 	return a.Scan()
-// }
 
 func multiScanner(scanner *bufio.Scanner, down int) func() bool {
 	fn := func() bool {

@@ -82,7 +82,8 @@ sample
 		}
 
 		for _, c := range cases {
-			got := countTrees(makeScanner(c.sample), c.route)
+			got := countTreesOldSkool(makeScanner(c.sample), c.route)
+			// got := countTreesScanning(makeScanner(c.sample), c.route)
 			assertEqual(t, got, c.want)
 		}
 	})
