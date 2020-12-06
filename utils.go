@@ -1,6 +1,10 @@
 package main
 
-import "testing"
+import (
+	"log"
+	"os"
+	"testing"
+)
 
 func assertEqual(t *testing.T, got, want interface{}) {
 	t.Helper()
@@ -14,4 +18,14 @@ func assertNotNil(t *testing.T, got interface{}) {
 	if got == nil {
 		t.Error("unexpected nil")
 	}
+}
+
+func getFile(path string) *os.File {
+	file, err := os.Open(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+
+	return file
 }
