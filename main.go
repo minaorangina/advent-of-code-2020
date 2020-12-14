@@ -12,5 +12,6 @@ func main() {
 		"three-2", threePart2(),
 		"four-1", fourPart1(),
 		"four-2", fourPart2(),
+		"five-1", fivePart1(),
 	)
 }
