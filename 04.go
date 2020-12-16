@@ -32,7 +32,7 @@ func fourPart2() int {
 
 func doFour(r io.Reader, validator func(s string) int) int {
 	scanner := bufio.NewScanner(r)
-	scanner.Split(customSplitFn)
+	scanner.Split(splitByBlankLine)
 
 	count := 0
 	for scanner.Scan() {
@@ -273,7 +273,7 @@ func validatePid(s string) bool {
 	return true
 }
 
-func customSplitFn(data []byte, atEOF bool) (advance int, token []byte, err error) {
+func splitByBlankLine(data []byte, atEOF bool) (advance int, token []byte, err error) {
 	if atEOF && len(data) == 0 {
 		return 0, nil, nil
 	}
