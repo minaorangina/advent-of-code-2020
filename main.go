@@ -17,5 +17,6 @@ func main() {
 		"six-1", sixPart1(),
 		"six-2", sixPart2(),
 		"seven-1", sevenPart1(),
+		"seven-2", sevenPart2(),
 	)
 }
